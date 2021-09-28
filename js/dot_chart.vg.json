@@ -10,11 +10,10 @@
         "scale": {"zero": false},
         "axis":{"grid": false}
       },
-    "color": {"field": "Regional indicator", "type": "nominal"},
     "x": {
       "field": "Regional indicator",
       "type": "nominal",
-      "axis":{"labels":false}
+      "axis":{"labels":false, "ticks":false, "title":null}
     }, 
     "tooltip":[
         {"field":"Ladder score"},
@@ -22,8 +21,25 @@
         {"field":"Regional indicator"}
       ]
 },"layer": [{
+    "selection":{
+      "selected_region":{
+        "type":"multi",
+        "fields":["Regional indicator"],
+        "bind":"legend"
+      }
+    },
     "mark": {
-      "type": "point"
+      "type": "circle"
+    },
+    "encoding": {
+      "color":{
+        "field":"Regional indicator",
+        "type": "nominal"
+      },
+      "opacity":{
+        "condition":{"selection":"selected_region", "value":1},
+        "value":0.1
+      }
     }
   },
   {
@@ -33,11 +49,15 @@
       "baseline":"bottom",
       "dy":-3,
       "opacity":{
-        "expr": "datum['Country name']=='Australia' ||  datum['Country name']=='Singapore' || datum['Country name']=='China' || datum['Country name']=='Finland' || datum['Country name']=='Afghanistan'? 1 : 0"}
+        "expr": "datum['Country name']=='Australia' ||  datum['Country name']=='Singapore' || datum['Country name']=='China' || datum['Country name']=='Finland' || datum['Country name']=='Afghanistan'? 0.7 : 0"}
     },
     "encoding": {
       "text":{"field":"Country name"},
-      "color":{"value":"black"}
+      "color":{"value":"black"},
+      "opacity":{
+        "condition":{"selection":"selected_region"},
+        "value":0
+      }
     }
   }
 ]

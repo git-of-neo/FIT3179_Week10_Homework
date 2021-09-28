@@ -31,8 +31,21 @@
   }
   ,"layer": [
     {
+      "selection":{
+        "selected_region":{
+          "type":"multi",
+          "fields":["Regional indicator"],
+          "bind":"legend"
+        }
+      },
       "mark": {
         "type": "bar"
+      },
+      "encoding": {
+        "opacity":{
+          "condition":{"selection":"selected_region", "value":1},
+          "value":0.1
+        }
       }
     },
     {
@@ -45,7 +58,11 @@
         "fontStyle":"bold"
       },
       "encoding": {
-        "text":{"field":"Regional average", "format":".2f"}
+        "text":{"field":"Regional average", "format":".2f"},
+        "opacity":{
+          "condition":{"selection":"selected_region", "value":1},
+          "value":0.1
+        }
       }
     }
   ]
