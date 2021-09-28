@@ -2,7 +2,6 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {"url": "data/world-happiness-report-2021.csv"},
   "width":"container",
-  "height":"container",
   "encoding": {
     "y": {
         "field": "Ladder score", 
