@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "data/world-happiness-report-2021.csv"},
+  "width":"container",
+  "height":"container",
+  "encoding": {
+    "y": {
+        "field": "Ladder score", 
+        "type": "quantitative",
+        "scale": {"zero": false},
+        "axis":{"grid": false}
+      },
+    "color": {"field": "Regional indicator", "type": "nominal"},
+    "x": {
+      "field": "Regional indicator",
+      "type": "nominal",
+      "axis":{"labels":false}
+    }, 
+    "tooltip":[
+        {"field":"Ladder score"},
+        {"field":"Country name"},
+        {"field":"Regional indicator"}
+      ]
+},"layer": [{
+    "mark": {
+      "type": "point"
+    }
+  },
+  {
+    "mark" : {
+      "type": "text",
+      "align":"center",
+      "baseline":"bottom",
+      "dy":-3,
+      "opacity":{
+        "expr": "datum['Country name']=='Australia' ||  datum['Country name']=='Singapore' || datum['Country name']=='China' || datum['Country name']=='Finland' || datum['Country name']=='Afghanistan'? 1 : 0"}
+    },
+    "encoding": {
+      "text":{"field":"Country name"},
+      "color":{"value":"black"}
+    }
+  }
+]
+,"config": {
+  "style": {
+    "cell": {
+      "stroke": "transparent"
+    }
+  }
+}
+}

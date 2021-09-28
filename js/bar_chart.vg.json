@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "data/world-happiness-report-2021.csv"},
+  "width":"container",
+  "height":"container",
+  "transform": [{
+    "aggregate": [{
+      "op": "mean",
+      "field": "Ladder score",
+      "as": "Regional average"
+    }],"groupby": ["Regional indicator"]
+  }],
+  "encoding": {
+    "y": {
+        "field":"Regional average",
+        "type": "quantitative",
+        "axis":{
+          "grid": false, "title":null, "labels": false, "ticks": false
+        }
+      },
+    "color": {"field": "Regional indicator", "type": "nominal"},
+    "x": {
+      "field": "Regional indicator",
+      "type": "nominal",
+      "axis":{"labels" : false, "ticks": false, "title":null}
+    }, 
+    "tooltip":[
+        {"field":"Regional average", "format":".2f"},
+        {"field":"Regional indicator", "title": "Region"}
+      ]
+  }
+  ,"layer": [
+    {
+      "mark": {
+        "type": "bar"
+      }
+    },
+    {
+      "mark" : {
+        "type": "text",
+        "angle":90,
+        "dx":-3,
+        "align":"right",
+        "baseline":"middle",
+        "fontStyle":"bold"
+      },
+      "encoding": {
+        "text":{"field":"Regional average", "format":".2f"}
+      }
+    }
+  ]
+  ,"config": {
+    "style": {
+      "cell": {
+        "stroke": "transparent"
+      }
+    }
+  }
+}

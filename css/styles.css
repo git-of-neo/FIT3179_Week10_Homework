@@ -1,0 +1,16 @@
+body{
+    background-color: lightgrey;
+}
+.page{
+    max-width: 850px;
+    margin: auto;
+    background-color: white;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.paragraph{
+    font-size: 13px;
+}
+.section-header{
+    margin-top:0px;
+}
