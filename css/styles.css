@@ -2,7 +2,7 @@ body{
     background-color: lightgrey;
 }
 .page{
-    max-width: 850px;
+    width: 850px;
     margin: auto;
     background-color: white;
     padding-left: 30px;
